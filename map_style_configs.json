@@ -23,8 +23,8 @@
     }
   },
 
-  "marker_poi_point": {
-    "description": "สำหรับข้อมูลจุดสนใจ (POIs) เช่น สถานที่, โรงพยาบาล, โรงเรียน ",
+  "": {
+    "description": "",
     "renderConfig": {
       "layerType": "circle",
       "paint": {
@@ -66,8 +66,8 @@
     }
   },
 
-  "hotspot_fire_heatmap": {
-    "description": "สำหรับแสดงความหนาแน่นของจุดความร้อน เช่น จุดไฟป่า (Hotspots)",
+  "marker_poi_point": {
+    "description": "สำหรับข้อมูลจุดสนใจ (POIs) เช่น สถานที่, โรงพยาบาล, โรงเรียน ",
     "renderConfig": {
       "layerType": "heatmap",
       "paint": {
