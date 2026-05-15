@@ -14,6 +14,19 @@
             "fill-outline-color": "#94a3b8"
           }
         }
+      },
+      {
+        "styleKey": "3d_extrusion",
+        "styleName": "3D Extrusion",
+        "renderConfig": {
+          "layerType": "fill-extrusion",
+          "paint": {
+            "fill-extrusion-color": ["case", ["boolean", ["feature-state", "hover"], false], "#cf1fb4", "#9333ea"],
+            "fill-extrusion-height": 5000,
+            "fill-extrusion-base": 0,
+            "fill-extrusion-opacity": 0.8
+          }
+        }
       }
     ]
   },
@@ -31,6 +44,19 @@
             "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#38bdf8", "#0ea5e9"],
             "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 4, 2],
             "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.85]
+          }
+        }
+      },
+      {
+        "styleKey": "dashed_line",
+        "styleName": "Dashed Line",
+        "renderConfig": {
+          "layerType": "line",
+          "paint": {
+            "line-color": "#f43f5e",
+            "line-width": 3,
+            "line-dasharray": [3, 2],
+            "line-opacity": 0.9
           }
         }
       }
