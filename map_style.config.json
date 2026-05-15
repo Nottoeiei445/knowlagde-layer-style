@@ -42,7 +42,7 @@
           "renderConfig": {
             "layerType": "line",
             "paint": {
-              "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#38bdf8", "#0ea5e9"],
+              "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#0ea5e9"],
               "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 4, 2],
               "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.85]
             }
@@ -52,14 +52,14 @@
           "styleKey": "dashed_line",
           "styleName": "Dashed Line",
           "renderConfig": {
-            "layerType": "line",
-            "paint": {
-              "line-color": "#f43f5e",
-              "line-width": 3,
-              "line-dasharray": [3, 2],
-              "line-opacity": 0.9
-            }
+          "layerType": "line",
+          "paint": {
+            "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#f43f5e"],
+            "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 5, 3],
+            "line-dasharray": [3, 2],
+            "line-opacity": 0.9
           }
+        }
         }
       ]
     },
@@ -89,7 +89,11 @@
             "layerType": "heatmap",
             "paint": {
             "heatmap-weight": 1,
-            "heatmap-intensity": 0.6,
+            "heatmap-intensity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"], 0, 0.6, 9, 0.8, 15, 1.2
+            ],
             "heatmap-color": [
               "interpolate",
               ["linear"],
@@ -98,7 +102,7 @@
             "heatmap-radius": [
               "interpolate",
               ["linear"],
-              ["zoom"], 0, 2, 9, 10
+              ["zoom"], 0, 2, 9, 10, 15, 20
             ],
             "heatmap-opacity": 0.8
           }
