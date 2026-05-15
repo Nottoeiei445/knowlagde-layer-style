@@ -9,7 +9,7 @@
         "renderConfig": {
           "layerType": "fill",
           "paint": {
-            "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#38bdf8", "#cf1fb4"],
+            "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#069c0b"],
             "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.25, 0.1],
             "fill-outline-color": "#94a3b8"
           }
