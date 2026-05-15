@@ -117,7 +117,7 @@
         }
       ]
     }
-  },
+  }
   "colors": [
     { "key": "black", "value": "#000000", "role": "base" },
     { "key": "gray", "value": "#808080", "role": "base" },
