@@ -1,119 +1,135 @@
 {
-  "polygon_data": {
-    "description": "For administrative boundary data such as provinces, districts, or flooded areas.",
-    "defaultStyle": "fill",
-    "availableStyles": [
-      {
-        "styleKey": "fill",
-        "styleName": "Polygon Area",
-        "renderConfig": {
-          "layerType": "fill",
-          "paint": {
-            "fill-color": ["case", ["boolean",  ["feature-state", "hover"], false], "#facc15", "#1f069c"], 
-            "fill-opacity": ["case", ["boolean",  ["feature-state", "hover"], false], 0.9, 0.85],   
-            "fill-outline-color": "#ffffff"
+  "styles": {
+    "polygon_data": {
+      "description": "For administrative boundary data such as provinces, districts, or flooded areas.",
+      "defaultStyle": "fill",
+      "availableStyles": [
+        {
+          "styleKey": "fill",
+          "styleName": "Polygon Area",
+          "renderConfig": {
+            "layerType": "fill",
+            "paint": {
+              "fill-color": ["case", ["boolean",  ["feature-state", "hover"], false], "#facc15", "#1f069c"], 
+              "fill-opacity": ["case", ["boolean",  ["feature-state", "hover"], false], 0.9, 0.85],   
+              "fill-outline-color": "#ffffff"
+            }
+          }
+        },
+        {
+          "styleKey": "3d_extrusion",
+          "styleName": "3D Extrusion",
+          "renderConfig": {
+            "layerType": "fill-extrusion",
+            "paint": {
+              "fill-extrusion-color": ["case", ["boolean", ["feature-state", "hover"], false], "#cf1fb4", "#9333ea"],
+              "fill-extrusion-height": 5000,
+              "fill-extrusion-base": 0,
+              "fill-extrusion-opacity": 0.8
+            }
           }
         }
-      },
-      {
-        "styleKey": "3d_extrusion",
-        "styleName": "3D Extrusion",
-        "renderConfig": {
-          "layerType": "fill-extrusion",
-          "paint": {
-            "fill-extrusion-color": ["case", ["boolean", ["feature-state", "hover"], false], "#cf1fb4", "#9333ea"],
-            "fill-extrusion-height": 5000,
-            "fill-extrusion-base": 0,
-            "fill-extrusion-opacity": 0.8
+      ]
+    },
+  
+    "line_data": {
+      "description": "For linear data such as rivers, canals, or roads.",
+      "defaultStyle": "line",
+      "availableStyles": [
+        {
+          "styleKey": "line",
+          "styleName": "Solid Line",
+          "renderConfig": {
+            "layerType": "line",
+            "paint": {
+              "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#38bdf8", "#0ea5e9"],
+              "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 4, 2],
+              "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.85]
+            }
+          }
+        },
+        {
+          "styleKey": "dashed_line",
+          "styleName": "Dashed Line",
+          "renderConfig": {
+            "layerType": "line",
+            "paint": {
+              "line-color": "#f43f5e",
+              "line-width": 3,
+              "line-dasharray": [3, 2],
+              "line-opacity": 0.9
+            }
           }
         }
-      }
-    ]
-  },
-
-  "line_data": {
-    "description": "For linear data such as rivers, canals, or roads.",
-    "defaultStyle": "line",
-    "availableStyles": [
-      {
-        "styleKey": "line",
-        "styleName": "Solid Line",
-        "renderConfig": {
-          "layerType": "line",
-          "paint": {
-            "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#38bdf8", "#0ea5e9"],
-            "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 4, 2],
-            "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.85]
+      ]
+    },
+  
+    "point_data": {
+      "description": "For all point data such as hotspots, POIs, hospitals, or schools.",
+      "defaultStyle": "circle",
+      "availableStyles": [
+        {
+          "styleKey": "circle",
+          "styleName": "Single Points",
+          "renderConfig": {
+            "layerType": "circle",
+            "paint": {
+              "circle-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#f43f5e"],
+              "circle-radius": ["case", ["boolean", ["feature-state", "hover"], false], 9, 6],
+              "circle-stroke-width": 2,
+              "circle-stroke-color": "#ffffff",
+              "circle-opacity": 0.95
+            }
+          }
+        },
+        {
+          "styleKey": "heatmap",
+          "styleName": "Density (Heatmap)",
+          "renderConfig": {
+            "layerType": "heatmap",
+            "paint": {
+              "heatmap-weight": 1,
+              "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 0, 1, 9, 3],
+              "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(255,255,255,0)", 0.2, "rgb(189,0,38)", 0.5, "rgb(240,59,32)", 0.8, "rgb(254,204,92)", 1, "rgb(255,255,255)"],
+              "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, 9, 20],
+              "heatmap-opacity": 0.8
+            }
           }
         }
-      },
-      {
-        "styleKey": "dashed_line",
-        "styleName": "Dashed Line",
-        "renderConfig": {
-          "layerType": "line",
-          "paint": {
-            "line-color": "#f43f5e",
-            "line-width": 3,
-            "line-dasharray": [3, 2],
-            "line-opacity": 0.9
+      ]
+    },
+  
+    "raster_data": {
+      "description": "For all image data (WMS, WMTS, TMS, coverage_tile) such as satellite imagery or rain radar.",
+      "defaultStyle": "raster",
+      "availableStyles": [
+        {
+          "styleKey": "raster",
+          "styleName": "Raster Image",
+          "renderConfig": {
+            "layerType": "raster",
+            "paint": {
+              "raster-opacity": 0.85,
+              "raster-fade-duration": 300,
+              "raster-contrast": 0.1
+            }
           }
         }
-      }
-    ]
-  },
-
-  "point_data": {
-    "description": "For all point data such as hotspots, POIs, hospitals, or schools.",
-    "defaultStyle": "circle",
-    "availableStyles": [
-      {
-        "styleKey": "circle",
-        "styleName": "Single Points",
-        "renderConfig": {
-          "layerType": "circle",
-          "paint": {
-            "circle-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#f43f5e"],
-            "circle-radius": ["case", ["boolean", ["feature-state", "hover"], false], 9, 6],
-            "circle-stroke-width": 2,
-            "circle-stroke-color": "#ffffff",
-            "circle-opacity": 0.95
-          }
-        }
-      },
-      {
-        "styleKey": "heatmap",
-        "styleName": "Density (Heatmap)",
-        "renderConfig": {
-          "layerType": "heatmap",
-          "paint": {
-            "heatmap-weight": 1,
-            "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 0, 1, 9, 3],
-            "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(255,255,255,0)", 0.2, "rgb(189,0,38)", 0.5, "rgb(240,59,32)", 0.8, "rgb(254,204,92)", 1, "rgb(255,255,255)"],
-            "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, 9, 20],
-            "heatmap-opacity": 0.8
-          }
-        }
-      }
-    ]
-  },
-
-  "raster_data": {
-    "description": "For all image data (WMS, WMTS, TMS, coverage_tile) such as satellite imagery or rain radar.",
-    "defaultStyle": "raster",
-    "availableStyles": [
-      {
-        "styleKey": "raster",
-        "styleName": "Raster Image",
-        "renderConfig": {
-          "layerType": "raster",
-          "paint": {
-            "raster-opacity": 0.85,
-            "raster-fade-duration": 300,
-            "raster-contrast": 0.1
-          }
-        }
-      }
-    ]
+      ]
+    }
   }
+  "colors": [
+    { "key": "black", "value": "#000000", "role": "base" },
+    { "key": "gray", "value": "#808080", "role": "base" },
+    { "key": "white", "value": "#FFFFFF", "role": "base" },
+    { "key": "red", "value": "#FF0000", "role": "base" },
+    { "key": "blue", "value": "#0000FF", "role": "base" },
+    { "key": "green", "value": "#008000", "role": "base" },
+    { "key": "yellow", "value": "#FFFF00", "role": "base" },
+    { "key": "orange", "value": "#FFA500", "role": "base" },
+    { "key": "purple", "value": "#800080", "role": "base" },
+    { "key": "pink", "value": "#FFC0CB", "role": "base" },
+    { "key": "brown", "value": "#A52A2A", "role": "base" },
+    { "key": "cyan", "value": "#00FFFF", "role": "base" }
+  ]
 }
