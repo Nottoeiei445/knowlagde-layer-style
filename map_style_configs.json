@@ -4,7 +4,7 @@
     "renderConfig": {
       "layerType": "fill",
       "paint": {
-        "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#38bdf8", "#64748b"],
+        "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#38bdf8", "#cf1fb4"],
         "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.25, 0.1],
         "fill-outline-color": "#94a3b8"
       }
@@ -47,5 +47,23 @@
         "raster-contrast": 0.1
       }
     }
+  },
+
+
+  "hazard_earthquake_symbol": {
+    "description": "สำหรับข้อมูลจุดศูนย์กลางแผ่นดินไหว แสดงเป็นไอคอนแจ้งเตือนเตะตา (ไม่มีตัวหนังสือ เพื่อความสะอาดของแผนที่ รอให้ User คลิกดูรายละเอียดเอง)",
+    "renderConfig": {
+      "layerType": "symbol",
+      "layout": {
+        "icon-image": "alert-triangle", 
+        "icon-size": ["case", ["boolean", ["feature-state", "hover"], false], 1.2, 0.8],
+        "icon-allow-overlap": true
+      },
+      "paint": {
+        "icon-color": "#ef4444",
+        "icon-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.85]
+      }
+    }
   }
+
 }
