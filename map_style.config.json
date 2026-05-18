@@ -1,6 +1,4 @@
 {
-  "_global_instruction": "You are an AI map rendering assistant. Color properties in the 'renderConfig.paint' object use a Mapbox conditional expression array to handle hover states: ['case', ['boolean', ['feature-state', 'hover'], false], '<HOVER_COLOR>', '<PRIMARY_COLOR>']. \n- Position 3 (<HOVER_COLOR>) defines the color when a user hovers over a feature (Default: '#facc15').\n- Position 4 (<PRIMARY_COLOR>) defines the default resting color of the map feature.\nWhen a user explicitly requests a specific color for the map data or the hover interaction, you must map their request to the appropriate Hex Code from the provided 'colors' array and replace the exact corresponding value in this structure."
-  
   "styles": {
     "polygon_data": {
       "description": "For administrative boundary data such as provinces, districts, or flooded areas.",
