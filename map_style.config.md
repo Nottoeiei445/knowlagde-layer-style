@@ -1,0 +1,147 @@
+# Map Rendering Knowledge Base
+
+@role: You are an AI Map Style Router.
+@instruction: You must STRICTLY select the requested style from this knowledge base. Output ONLY the extracted `renderStyles` JSON array. Do NOT return the entire catalog.
+@color_instruction: Paint properties use a conditional array for hover states: `["case", ["boolean", ["feature-state", "hover"], false], "<HOVER_COLOR>", "<PRIMARY_COLOR>"]`. If the user requests a specific color, match it from the 'Color Palette' below and replace ONLY the `<PRIMARY_COLOR>` (Position 4). DO NOT change the Heatmap colors.
+
+## Color Palette Reference
+Use these exact hex codes when a user specifies a color in their prompt:
+- black: #000000
+- gray: #808080
+- white: #FFFFFF
+- red: #FF0000
+- blue: #0000FF
+- green: #008000
+- yellow: #FFFF00
+- orange: #FFA500
+- purple: #800080
+- pink: #FFC0CB
+- brown: #A52A2A
+- cyan: #00FFFF
+
+---
+title: polygon_data
+description: For administrative boundary data such as provinces, districts, or flooded areas.
+defaultStyle: fill
+---
+
+## Available Styles
+
+### Style Key: fill
+**Style Name:** Polygon Area
+**Layer Type:** fill
+**Paint:**
+
+    {
+      "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#1f069c"],
+      "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.9, 0.85],
+      "fill-outline-color": "#ffffff"
+    }
+
+### Style Key: 3d_extrusion
+**Style Name:** 3D Extrusion
+**Layer Type:** fill-extrusion
+**Paint:**
+
+    {
+      "fill-extrusion-color": ["case", ["boolean", ["feature-state", "hover"], false], "#cf1fb4", "#9333ea"],
+      "fill-extrusion-height": 5000,
+      "fill-extrusion-base": 0,
+      "fill-extrusion-opacity": 0.8
+    }
+
+---
+title: line_data
+description: For linear data such as rivers, canals, or roads.
+defaultStyle: line
+---
+
+## Available Styles
+
+### Style Key: line
+**Style Name:** Solid Line
+**Layer Type:** line
+**Paint:**
+
+    {
+      "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#0ea5e9"],
+      "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 4, 2],
+      "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.85]
+    }
+
+### Style Key: dashed_line
+**Style Name:** Dashed Line
+**Layer Type:** line
+**Paint:**
+
+    {
+      "line-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#f43f5e"],
+      "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 5, 3],
+      "line-dasharray": [3, 2],
+      "line-opacity": 0.9
+    }
+
+---
+title: point_data
+description: For all point data such as hotspots, POIs, hospitals, or schools.
+defaultStyle: circle
+---
+
+## Available Styles
+
+### Style Key: circle
+**Style Name:** Single Points
+**Layer Type:** circle
+**Paint:**
+
+    {
+      "circle-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#f43f5e"],
+      "circle-radius": ["case", ["boolean", ["feature-state", "hover"], false], 9, 6],
+      "circle-stroke-width": 2,
+      "circle-stroke-color": "#ffffff",
+      "circle-opacity": 0.95
+    }
+
+### Style Key: heatmap
+**Style Name:** Density (Heatmap)
+**Layer Type:** heatmap
+**Paint:**
+
+    {
+      "heatmap-weight": 1,
+      "heatmap-intensity": [
+        "interpolate",
+        ["linear"],
+        ["zoom"], 0, 0.1, 9, 0.25, 15, 1.2
+      ],
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"], 0, "rgba(0, 0, 0, 0)", 0.1, "rgba(255, 165, 0, 0.1)", 0.4, "rgba(255, 165, 0, 0.6)", 0.7, "rgb(255, 69, 0)", 0.9, "rgb(189, 0, 38)", 0.98, "rgb(211, 211, 211)", 1, "rgb(255, 255, 255)"
+      ],
+      "heatmap-radius": [
+        "interpolate",
+        ["linear"],
+        ["zoom"], 0, 2, 9, 10, 15, 20
+      ],
+      "heatmap-opacity": 0.8
+    }
+
+---
+title: raster_data
+description: For all image data (WMS, WMTS, TMS, coverage_tile) such as satellite imagery or rain radar.
+defaultStyle: raster
+---
+
+## Available Styles
+
+### Style Key: raster
+**Style Name:** Raster Image
+**Layer Type:** raster
+**Paint:**
+
+    {
+      "raster-opacity": 0.85,
+      "raster-fade-duration": 300,
+      "raster-contrast": 0.1
+    }
