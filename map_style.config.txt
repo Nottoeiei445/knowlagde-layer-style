@@ -33,7 +33,7 @@ defaultStyle: fill
 **Paint:**
 
     {
-      "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#1f069c"],
+      "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#069c0b"],
       "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.9, 0.85],
       "fill-outline-color": "#ffffff"
     }
