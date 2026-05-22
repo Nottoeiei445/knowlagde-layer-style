@@ -95,11 +95,24 @@ defaultStyle: circle
 **Paint:**
 
     {
-      "circle-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#f43f5e"],
-      "circle-radius": ["case", ["boolean", ["feature-state", "hover"], false], 9, 6],
-      "circle-stroke-width": 2,
+      "circle-color": [
+        "interpolate",
+        ["linear"],
+        ["get", "bright_ti5"],
+        290, "#FFFF00",
+        315, "#FFA500",
+        340, "#FF0000"
+      ],
+      "circle-radius": [
+        "interpolate",
+        ["linear"],
+        ["get", "bright_ti5"],
+        290, 5,
+        340, 14
+      ],
+      "circle-stroke-width": 1.5,
       "circle-stroke-color": "#ffffff",
-      "circle-opacity": 0.95
+      "circle-opacity": 0.9
     }
 
 ### Style Key: heatmap
@@ -125,32 +138,6 @@ defaultStyle: circle
         ["zoom"], 0, 2, 9, 10, 15, 20
       ],
       "heatmap-opacity": 0.8
-    }
-
-### Style Key: viirs_intensity
-**Style Name:** viirs Intensity (Bright TI5)
-**Layer Type:** circle
-**Paint:**
-
-    {
-      "circle-color": [
-        "interpolate",
-        ["linear"],
-        ["get", "bright_ti5"],
-        290, "#FFFF00",
-        315, "#FFA500",
-        340, "#FF0000"
-      ],
-      "circle-radius": [
-        "interpolate",
-        ["linear"],
-        ["get", "bright_ti5"],
-        290, 5,
-        340, 14
-      ],
-      "circle-stroke-width": 1.5,
-      "circle-stroke-color": "#ffffff",
-      "circle-opacity": 0.9
     }
 
 ---
