@@ -33,8 +33,32 @@ defaultStyle: fill
 **Paint:**
 
     {
-      "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], "#facc15", "#069c0b"],
-      "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.9, 0.85],
+      "fill-color": [
+        "case",
+        ["boolean", ["feature-state", "hover"], false],
+        "#FFFF00",
+        [
+          "match",
+          ["get", "re_nesdb"],
+          "North", "#008000",
+          "Northeast", "#FFA500",
+          "Central", "#0000FF",
+          "East", "#800080",
+          "West", "#FFC0CB",
+          "South", "#FF0000",
+          "#808080"
+        ]
+      ],
+      "fill-opacity": [
+        "interpolate",
+        ["linear"],
+        ["get", "areashape"],
+        400000000, 0.20,
+        2000000000, 0.40,
+        5000000000, 0.60,
+        10000000000, 0.80,
+        21000000000, 0.95
+      ],
       "fill-outline-color": "#ffffff"
     }
 
