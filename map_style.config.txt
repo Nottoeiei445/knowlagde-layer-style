@@ -68,10 +68,33 @@ defaultStyle: fill
 **Paint:**
 
     {
-      "fill-extrusion-color": ["case", ["boolean", ["feature-state", "hover"], false], "#cf1fb4", "#9333ea"],
-      "fill-extrusion-height": 5000,
+      "fill-extrusion-color": [
+        "case",
+        ["boolean", ["feature-state", "hover"], false],
+        "#FFFFFF", 
+        [
+          "match",
+          ["get", "re_nesdb"],
+          "North", "#008000",
+          "Northeast", "#FFA500",
+          "Central", "#0000FF",
+          "East", "#800080",
+          "West", "#FFC0CB",
+          "South", "#FF0000",
+          "#808080"
+        ]
+      ],
+      "fill-extrusion-height": [
+        "interpolate",
+        ["linear"],
+        ["get", "areashape"],
+        400000000, 10000,      
+        5000000000, 50000,     
+        10000000000, 100000,   
+        21000000000, 200000    
+      ],
       "fill-extrusion-base": 0,
-      "fill-extrusion-opacity": 0.8
+      "fill-extrusion-opacity": 0.85
     }
 
 ---
