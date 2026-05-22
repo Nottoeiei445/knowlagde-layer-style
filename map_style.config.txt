@@ -127,6 +127,32 @@ defaultStyle: circle
       "heatmap-opacity": 0.8
     }
 
+### Style Key: viirs_intensity
+**Style Name:** viirs Intensity (Bright TI5)
+**Layer Type:** circle
+**Paint:**
+
+    {
+      "circle-color": [
+        "interpolate",
+        ["linear"],
+        ["get", "bright_ti5"],
+        290, "#FFFF00",
+        315, "#FFA500",
+        340, "#FF0000"
+      ],
+      "circle-radius": [
+        "interpolate",
+        ["linear"],
+        ["get", "bright_ti5"],
+        290, 5,
+        340, 14
+      ],
+      "circle-stroke-width": 1.5,
+      "circle-stroke-color": "#ffffff",
+      "circle-opacity": 0.9
+    }
+
 ---
 title: raster_data
 description: For all image data (WMS, WMTS, TMS, coverage_tile) such as satellite imagery or rain radar.
