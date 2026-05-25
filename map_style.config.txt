@@ -68,6 +68,8 @@ defaultStyle: fill
 **Paint:**
 
     {
+      "fill-extrusion-color": ["case", ["boolean", ["feature-state", "hover"], false], "#cf1fb4", "#9333ea"],
+      "fill-extrusion-height": 5000,
       "fill-extrusion-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
@@ -94,6 +96,7 @@ defaultStyle: fill
         21000000000, 200000    
       ],
       "fill-extrusion-base": 0,
+      "fill-extrusion-opacity": 0.8
       "fill-extrusion-opacity": 0.85
     }
 
@@ -142,17 +145,24 @@ defaultStyle: circle
 **Paint:**
 
     {
-      "fill-color": [
+      "circle-color": [
         "interpolate",
         ["linear"],
-        ["get", "max_bright_ti5"],
-        0, "rgba(255, 255, 255, 0)",
+        ["get", "bright_ti5"],
         290, "#FFFF00",
         315, "#FFA500",
         340, "#FF0000"
       ],
-      "fill-opacity": 0.85,
-      "fill-outline-color": "rgba(255, 255, 255, 0.3)"
+      "circle-radius": [
+        "interpolate",
+        ["linear"],
+        ["get", "bright_ti5"],
+        290, 5,
+        340, 14
+      ],
+      "circle-stroke-width": 1.5,
+      "circle-stroke-color": "#ffffff",
+      "circle-opacity": 0.9
     }
 
 ### Style Key: heatmap
