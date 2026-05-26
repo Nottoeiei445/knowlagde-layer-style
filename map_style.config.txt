@@ -96,7 +96,7 @@ defaultStyle: fill
         21000000000, 200000    
       ],
       "fill-extrusion-base": 0,
-      "fill-extrusion-opacity": 0.8
+      "fill-extrusion-opacity": 0.8,
       "fill-extrusion-opacity": 0.85
     }
 
