@@ -77,7 +77,7 @@ defaultStyle: fill
   "fill-outline-color": "#ffffff"
 }
 
-### Style Key: 3d_extrusion (Default & Advanced)
+### Style Key: 3d_extrusion (Default Style)
 **Style Name:** 3D Extrusion
 **Layer Type:** fill-extrusion
 **Paint:**
