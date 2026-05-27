@@ -182,6 +182,66 @@ defaultStyle: circle
   "circle-opacity": 0.9
 }
 
+### Style Key: circle_by_multiple_attributes (Advanced Blueprint)
+**Style Name:** Multi-Attribute Points Fixed Steps
+**Layer Type:** circle
+{
+  "circle-color": [
+    "case",
+    ["boolean", ["feature-state", "hover"], false], "#FFFF00",
+    [
+      "case",
+      ["has", "<ATTRIBUTE_NAME_1>"], [
+        "match", ["get", "<ATTRIBUTE_NAME_1>"],
+        1, "<ATTR1_LIGHTEST_HEX>",
+        2, "<ATTR1_VAL2_HEX>",
+        5, "<ATTR1_MEDIUM_HEX>",
+        10, "<ATTR1_DARKEST_HEX>",
+        "<FALLBACK_HEX_COLOR>"
+      ],
+      ["has", "<ATTRIBUTE_NAME_2>"], [
+        "match", ["get", "<ATTRIBUTE_NAME_2>"],
+        1, "<ATTR2_LIGHTEST_HEX>",
+        2, "<ATTR2_VAL2_HEX>",
+        5, "<ATTR2_MEDIUM_HEX>",
+        10, "<ATTR2_DARKEST_HEX>",
+        "<FALLBACK_HEX_COLOR>"
+      ],
+      "<FALLBACK_HEX_COLOR>"
+    ]
+  ],
+  "circle-opacity": [
+    "case",
+    ["has", "<ATTRIBUTE_NAME_1>"], [
+      "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_1>"],
+      1, 0.4,
+      10, 1.0
+    ],
+    ["has", "<ATTRIBUTE_NAME_2>"], [
+      "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_2>"],
+      1, 0.4,
+      10, 1.0
+    ],
+    0.9
+  ],
+  "circle-radius": [
+    "case",
+    ["has", "<ATTRIBUTE_NAME_1>"], [
+      "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_1>"],
+      1, 5,
+      10, 14
+    ],
+    ["has", "<ATTRIBUTE_NAME_2>"], [
+      "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_2>"],
+      1, 5,
+      10, 14
+    ],
+    6
+  ],
+  "circle-stroke-width": 1.5,
+  "circle-stroke-color": "#ffffff"
+}
+
 ### Style Key: heatmap (Default Style)
 **Style Name:** Density (Heatmap)
 **Layer Type:** heatmap
