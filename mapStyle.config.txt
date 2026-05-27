@@ -55,13 +55,16 @@ defaultStyle: fill
 }
 
 ### Style Key: fill_by_multiple_category (Advanced Blueprint)
-**Style Name:** Polygon Area Categorized
+**Style Name:** Multi-Attribute Polygon Fixed Steps
 **Layer Type:** fill
-**Description:** Use this only when the user wants to color polygons based on a String/Categorical attribute.
+**Description:** Use this when the user wants to compare multiple polygon attributes (e.g., 2568 and 2569) containing fixed integer values (like 1 to 10) and expects each attribute to have its own color family.attribute.
 **Paint:**
 {
   "fill-color": [
     "case",
+    ["boolean", ["feature-state", "hover"], false], "#FFFF00", 
+    [
+      "case",
       ["has", "<ATTRIBUTE_NAME_1>"], [
         "match", ["get", "<ATTRIBUTE_NAME_1>"],
         1, "<ATTR1_LIGHTEST_HEX>",
@@ -85,32 +88,17 @@ defaultStyle: fill
     "case",
     ["has", "<ATTRIBUTE_NAME_1>"], [
       "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_1>"],
-      1, 0.4,
-      10, 1.0
+      1, 0.3,
+      10, 0.95
     ],
     ["has", "<ATTRIBUTE_NAME_2>"], [
       "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_2>"],
-      1, 0.4,
-      10, 1.0
+      1, 0.3,
+      10, 0.95
     ],
-    0.9
+    0.6 
   ],
-  "fill-radius": [
-    "case",
-    ["has", "<ATTRIBUTE_NAME_1>"], [
-      "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_1>"],
-      1, 5,
-      10, 14
-    ],
-    ["has", "<ATTRIBUTE_NAME_2>"], [
-      "interpolate", ["linear"], ["get", "<ATTRIBUTE_NAME_2>"],
-      1, 5,
-      10, 14
-    ],
-    6
-  ],
-  "fill-stroke-width": 1.5,
-  "fill-stroke-color": "#ffffff"
+  "fill-outline-color": "#ffffff" 
 }
 
 ### Style Key: fill_by_range (Advanced Blueprint)
