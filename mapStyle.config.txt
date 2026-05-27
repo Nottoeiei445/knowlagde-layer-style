@@ -185,6 +185,7 @@ defaultStyle: circle
 ### Style Key: circle_by_multiple_attributes (Advanced Blueprint)
 **Style Name:** Multi-Attribute Points Fixed Steps
 **Layer Type:** circle
+**Paint:**
 {
   "circle-color": [
     "case",
